@@ -20,7 +20,13 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '9.0.x'
-
+          
+      - name: Restore dependencies
+        run: dotnet restore
+        
+      - name: Install NUnit framework
+        run: dotnet add package nunit
+        
       - name: Run API tests
         run: dotnet test --filter Category=API --logger "trx;LogFileName=api-test.trx"
 
@@ -49,6 +55,9 @@ jobs:
       - name: Restore dependencies
         run: dotnet restore
 
+      - name: Install MsTest framework
+        run: dotnet add package mstest
+        
       - name: Run UI tests
         run: dotnet test --filter Category=UI --logger "trx;LogFileName=ui-test.trx"
 
