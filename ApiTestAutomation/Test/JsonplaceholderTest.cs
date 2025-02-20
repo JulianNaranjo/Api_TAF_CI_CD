@@ -11,7 +11,7 @@ namespace TestAutomationFramework.Test
     {
         private readonly JsonPlaceholderClient jsonPlaceholderClient = new($"https://jsonplaceholder.typicode.com");
 
-        [Test]
+        [Test, Category("API")]
         public void VerifyThatUsersCanBeRetrieved()
         {
             Logger.LogInfo("Start API testing -- Retrieved all users");
@@ -36,7 +36,7 @@ namespace TestAutomationFramework.Test
             Logger.LogInfo("End API testing -- Retrieved users");
         }
 
-        [Test]
+        [Test, Category("API")]
         public void VerifyThatHeaderExistOnResponse()
         {
             Logger.LogInfo("Start API testing -- Header exist");
@@ -51,7 +51,7 @@ namespace TestAutomationFramework.Test
             Logger.LogInfo("End API testing -- Header exist");
         }
 
-        [Test]
+        [Test, Category("API")]
         public void VerifyDataOnResponse()
         {
             Logger.LogInfo("Start API testing -- Data on response");
@@ -75,7 +75,7 @@ namespace TestAutomationFramework.Test
             Logger.LogInfo("End API testing -- Data on response");
         }
 
-        [Test]
+        [Test, Category("API")]
         public void VerifyThatUserCanBeCreated()
         {
             Logger.LogInfo("Start API testing -- Created user");
@@ -89,7 +89,7 @@ namespace TestAutomationFramework.Test
             Logger.LogInfo("End API testing -- Created user");
         }
 
-        [Test]
+        [Test, Category("API")]
         public async Task VerifyThatResourceNotExist()
         {
             Logger.LogInfo("Start API testing -- Resource not found");

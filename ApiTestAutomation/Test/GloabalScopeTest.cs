@@ -8,6 +8,7 @@ namespace TestAutomationFramework.Test
     public sealed class GloabalScopeTest : BaseTest
     {
         [TestMethod]
+        [TestCategory("UI")]
         [DataRow("Blockchain")]
         public void searchGlobalScopeTest(string keyword)
         {

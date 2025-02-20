@@ -8,6 +8,7 @@ namespace TestAutomationFramework.Test
     public sealed class AboutTest : BaseTest
     {
         [TestMethod]
+        [TestCategory("UI")]
         [DataRow("EPAM_Corporate_Overview_Q4_EOY.pdf")]
         public void DownloadFile(string fileName)
         {

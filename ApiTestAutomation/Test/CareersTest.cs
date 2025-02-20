@@ -9,6 +9,7 @@ namespace TestAutomationFramework.Test
     public sealed class CareersTest : BaseTest
     {
         [TestMethod]
+        [TestCategory("UI")]
         [DataRow("Python")]
         public void searchOpenPositionByCriteriaTest(string keyword)
         {

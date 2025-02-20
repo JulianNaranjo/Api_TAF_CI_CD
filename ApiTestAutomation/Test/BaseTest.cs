@@ -23,13 +23,6 @@ namespace TestAutomationFramework.Test
             landingBusiness = new LandingBusiness(driver);
         }
 
-/*        public void GoToURL(string url)
-        {
-            var message = $"Start test with the URL: {url}";
-            Logger.LogInfo(message);
-            driver.Navigate().GoToUrl(url);
-        }*/
-
         [TestCleanup]
         public void closeBrowser()
         {

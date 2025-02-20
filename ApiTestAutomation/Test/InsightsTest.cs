@@ -8,6 +8,7 @@ namespace TestAutomationFramework.Test
     public sealed class InsightsTest : BaseTest
     {
         [TestMethod]
+        [TestCategory("UI")]
         [DataRow(2)]
         public void ValidateEqualsTitleOnBlog(int quantityClicks)
         {
