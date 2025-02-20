@@ -27,9 +27,6 @@ jobs:
       - name: Build the project
         run: dotnet build ./ApiTestAutomation/TestAutomationFramework.sln --configuration Release
         
-      - name: Install NUnit framework
-        run: dotnet add ./ApiTestAutomation/TestAutomationFramework.sln package NUnit
-        
       - name: Run API tests
         run: dotnet test ./ApiTestAutomation/TestAutomationFramework.sln --filter Category=API --logger "trx;LogFileName=api-test.trx"
 
@@ -61,9 +58,6 @@ jobs:
       - name: Build the project
         run: dotnet build ./ApiTestAutomation/TestAutomationFramework.sln --configuration Release
       
-      - name: Install MsTest framework
-        run: dotnet add ./ApiTestAutomation/TestAutomationFramework.sln package mstest
-        
       - name: Run UI tests
         run: dotnet test ./ApiTestAutomation/TestAutomationFramework.sln --filter Category=UI --logger "trx;LogFileName=ui-test.trx"
 
