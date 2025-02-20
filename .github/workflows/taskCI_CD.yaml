@@ -31,7 +31,7 @@ jobs:
         run: dotnet add package nunit
         
       - name: Run API tests
-        run: dotnet test --filter Category=API --logger "trx;LogFileName=api-test.trx"
+        run: dotnet test ./ApiTestAutomation/TestAutomationFramework.sln --filter Category=API --logger "trx;LogFileName=api-test.trx"
 
       - name: Upload API test results
         if: always()
@@ -65,7 +65,7 @@ jobs:
         run: dotnet add package mstest
         
       - name: Run UI tests
-        run: dotnet test --filter Category=UI --logger "trx;LogFileName=ui-test.trx"
+        run: dotnet test ./ApiTestAutomation/TestAutomationFramework.sln --filter Category=UI --logger "trx;LogFileName=ui-test.trx"
 
       - name: Upload UI test results and Screenshots
         if: always()
