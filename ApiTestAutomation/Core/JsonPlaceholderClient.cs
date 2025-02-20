@@ -10,7 +10,7 @@ namespace TestAutomationFramework.Core
     public class JsonPlaceholderClient
     {
         private readonly IRestClient client;
-        private RestResponse response;
+        private RestResponse response = null;
         private RestRequest request;
 
         public JsonPlaceholderClient(string baseUrl)
