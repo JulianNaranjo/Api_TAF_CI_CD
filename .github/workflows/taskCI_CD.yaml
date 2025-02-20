@@ -25,7 +25,7 @@ jobs:
         run: dotnet restore ./ApiTestAutomation/TestAutomationFramework.sln
 
       - name: Build the project
-        run: dotnet build --configuration Release
+        run: dotnet build ./ApiTestAutomation/TestAutomationFramework.sln --configuration Release
         
       - name: Install NUnit framework
         run: dotnet add package nunit
@@ -56,10 +56,10 @@ jobs:
           dotnet-version: '9.0.x'
 
       - name: Restore dependencies
-        run: dotnet restore
+        run: dotnet restore ./ApiTestAutomation/TestAutomationFramework.sln
 
       - name: Build the project
-        run: dotnet build --configuration Release
+        run: dotnet build ./ApiTestAutomation/TestAutomationFramework.sln --configuration Release
       
       - name: Install MsTest framework
         run: dotnet add package mstest
