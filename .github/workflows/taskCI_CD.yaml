@@ -22,7 +22,7 @@ jobs:
           dotnet-version: '9.0.x'
           
       - name: Restore dependencies
-        run: dotnet restore **/*.sln
+        run: dotnet restore ./ApiTestAutomation/TestAutomationFramework.sln
 
       - name: Build the project
         run: dotnet build --configuration Release
