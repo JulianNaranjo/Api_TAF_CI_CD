@@ -1,7 +1,9 @@
-﻿using OpenQA.Selenium;
+﻿using System.Configuration;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.Interactions;
 using TestAutomationFramework.Helpers;
 
 namespace TestAutomationFramework.Core
@@ -17,7 +19,13 @@ namespace TestAutomationFramework.Core
                 switch (browserType.ToLower())
                 {
                     case "chrome":
-                        driver = new ChromeDriver();
+                        ChromeOptions options = new();
+                        options.AddArgument("--no-sandbox");
+                        options.AddArgument("disable-infobars");
+                        options.AddArgument("--incognito");
+                        options.AddArgument("--disable-dev-shm-usage");
+                        options.AddArgument("--headless");
+                        driver = new ChromeDriver(options);
                         break;
                     case "firefox":
                         driver = new FirefoxDriver();

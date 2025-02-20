@@ -1,0 +1,77 @@
+name: TAF .NET CI/CD Pipeline
+
+on:
+    pull_request:
+        branches: ["main"]
+    schedule:
+        - cron: '0 0 * * *' 
+    workflow_dispatch: # Manual start
+
+jobs:
+    api-test:
+        name: Run API tests
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+
+            - name: Setup .NET 9
+              uses: actions/setup-dotnet@v4
+              with:
+                dotnet-version: '9.0.x'
+
+            - name: Run API tests
+              run: dotnet test --filter Category=API --logger "trx;LogFileName=api-test.trx"
+
+            - name: Upload API test results
+              if: always()
+              uses: actions/upload-artifact@v4
+              with:
+                name: api-test-results
+                path: '**/api-test.trx'
+
+    ui-test:
+        name: Run UI tests
+        runs-on: ubuntu-latest
+        needs: api-tests
+        if: always() #Run even if API fails
+
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+
+            - name: Setup .NET 9
+              uses: actions/setup-dotnet@v4
+              with:
+                dotnet-version: '9.0.x'
+
+            - name: Restore dependencies
+              run: dotnet restore
+
+            - name: Run UI tests
+              run: dotnet test --filter Category=UI --logger "trx;LogFileName=ui-test.trx"
+
+            - name: Upload UI test results and Screenshots
+              if: always()
+              uses: actions/upload-artifact@v4
+              with:
+                name: ui-test-results
+                path: |
+                    **/api-test.trx
+                    **/screenshots/
+    
+    finalize:
+        name: Finalize and publish all artifacts
+        runs-on: ubuntu-latest
+        needs: [api-tests, ui-tests]
+
+        steps:
+            - name: Download all artifacts
+              uses: actions/download-checkout@v4
+
+            - name: Publish all test results
+              run: echo "Artifacts published successfully"
+
+
+    
